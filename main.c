@@ -3,21 +3,18 @@
 // -----------------------------------------------------------------------
 
 int main() {
-  FILE *fptr;
-  fptr = fopen("./data/nomes.txt", "r");
+  FILE *file;
+  file = fopen("./data/nomes.txt", "r");
   char line[MAX_STRING_SIZE];
   HashTable *hTable;
   hTable = iniciateHash();
 
-  while (fgets(line, MAX_STRING_SIZE, fptr)) {
+  while (fgets(line, MAX_STRING_SIZE, file)) {
     hashInsert(line, hTable);
   }
 
   getAllElements(hTable);
-  // getElementsInCol(hTable, 47);
-  // printList(hTable->col[46]);
 
-  fclose(fptr);
+  fclose(file);
   freeHash(hTable);
-  return 0;
 }
